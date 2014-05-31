@@ -19,8 +19,10 @@ var Mmm, MIDI;
 		this.init = function() {
 			SELF.setDefault();
 			$('a').click(function() {
-				console.log($(this).data());
-				SELF.inputSingle($(this).data('note'));
+				var playNote = $(this).data('note');
+				if (typeof(playNote) == "string")
+					playNote = MIDI.keyToNote[playNote];
+				SELF.inputSingle(playNote);
 			})
 			/*Event.add($('a')[0], 'mousedown', function(event) {
 				console.log($(event.target).data('note'));
