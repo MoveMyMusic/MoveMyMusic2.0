@@ -1,0 +1,100 @@
+
+<div class="container">
+<div class="row">
+	<div class="modal fade" id="get-demo" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">&nbsp;</h4>
+          </div>
+          
+        <div class="modal-body">
+
+        <form class="signin" action="contact.php" method="post" id="buddydemo">
+        <input type="hidden" name="action" value="submit" />
+        <input type="hidden" name="Source" value="mybuyingbuddy.com" />
+            
+            
+              <div class="col-xs-12 text-center">
+                <h5>Move My Music</h5>
+                <p class="lead">Sign In to get started</p>
+              </div>
+              
+              <div class="row">
+              <div class="col-xs-12 col-sm-6">
+              
+                    <div class="form-group">
+                      <label for="name1">Name</label>
+                      <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                        <input id="name1" type="text" class="form-control" name="Contact" placeholder="First name + last name" required="">
+                      </div>
+                    </div>
+                    
+              
+              <div class="col-xs-12 col-sm-6">
+              
+                    <div class="form-group">
+                    
+                          <div class="col-xs-6">
+                            <?=$security;?>
+                          </div>
+                          
+                          <div class="col-xs-6">
+                            <input type="text" class="input" name="securityType" required="required">
+                          </div>
+                          
+                          <div class="col-xs-12">
+                            <p class="datanotes">Enter the text from the image into the box.</p>
+                          </div>
+                          
+                    </div>
+              </div>
+              </div> <!-- row -->
+        
+        
+        <!-- modal-body -->
+
+        </form>
+		              </div>
+
+        <div class="modal-footer">      
+         <button class="btn btn-success submitbutton" id="submit">submit</button>
+             <a href="#" class="btn" data-dismiss="modal">Close</a>
+         
+        </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+</div>
+</div>
+  <script>
+  $(function(){
+ $("button#submit").click(function(){
+		 $.ajax({
+            type: "POST",
+        url: "postfile.php",
+        data: $('form.signin').serialize(),
+            success: function(msg){			
+					$(".modal-body").load("thanks.php #content");
+					$(".submitbutton").hide();
+					 			//reset values in all input fields
+                    $('#buddydemo input').val(''); 
+                    $('#buddydemo textarea').val(''); 
+                    $('#buddydemo select').val(''); 
+
+                 },
+        error: function(){
+            alert("failure");
+            }             
+    });
+});
+})
+  </script>
