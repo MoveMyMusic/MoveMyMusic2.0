@@ -1,7 +1,7 @@
 var Mmm, MIDI;
 (function() { "use strict";
 	// disable mobile safari "bounce"
-	document.addEventListener('touchmove', function(e){ e.preventDefault(); }, false);
+	//document.addEventListener('touchmove', function(e){ e.preventDefault(); }, false);
 
 	// REMOVE BLANK CHARS FROM BEGINNING AND END OF STRING
 	String.prototype.trim = function () {
@@ -65,4 +65,6 @@ var Mmm, MIDI;
 	Event.add("body", "ready", function() {
 		MIDI.loader = new widgets.Loader("Loading MoveMyMusic");
 	});
+	
+	$('.q-note').draggable();
 })();
