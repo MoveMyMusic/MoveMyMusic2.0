@@ -1,5 +1,5 @@
 """
-Django settings for MoveMyMusic project.
+Django settings for movemymusic2 project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '6jqc=yp%xd(x9pjrk@@5jb2nst_toym*^yc4y!vxyx^4ury-y2'
+SECRET_KEY = '*de-%s3kb&+5r&w0k6tond(q=#*o7@=jhb#x$%ozo&1%c-&k#6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -47,9 +47,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'MoveMyMusic.urls'
+ROOT_URLCONF = 'movemymusic2.urls'
 
-WSGI_APPLICATION = 'MoveMyMusic.wsgi.application'
+WSGI_APPLICATION = 'movemymusic2.wsgi.application'
 
 
 # Database
@@ -58,11 +58,11 @@ WSGI_APPLICATION = 'MoveMyMusic.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'MoveMyMusicDB',
-        'USER': 'admin',
-        'PASSWORD': 'MoveMyMusic5280',
-        'HOST': 'localhost',
-        'Port': '5432',
+        'NAME': 'movemymusicdb',
+	'USER': 'musicadmin',
+	'PASSWORD': 'musicrocks',
+	'HOST': '',
+	'PORT': '',
     }
 }
 
