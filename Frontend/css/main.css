@@ -21,8 +21,11 @@ min-height:200px;
 max-height:300px;
 width:auto;
 }
-footer, #section-contacts {
+footer, #section-contacts, #section-notes {
 padding-bottom:5%;
 padding-top:5%;
+} 
+#section-notes object {
+height:100%;
 }
 
