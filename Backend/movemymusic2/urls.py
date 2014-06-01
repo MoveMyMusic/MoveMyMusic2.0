@@ -1,16 +1,17 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import patterns, url, include
+from rest_framework.urlpatterns import format_suffix_patterns
+#from django.contrib import admin
 
-from django.contrib import admin
+
 admin.autodiscover()
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'movemymusic2.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-    url(r'^', include('teacher.urls'))
-    url(r'^', include('class.urls'))
-    url(r'^', include('students.urls'))
-    url(r'^', include('compositions.urls'))
-    url(r'^', include('assignments.urls'))
-    url(r'^admin/', include(admin.site.urls)),
+urlpatterns = patterns('', 
+	url(r'^teacher/$', 'teacher.views'),
+	url(r'^class/$', 'class.views'),
+    url(r'^students/', 'students.views'),
+    url(r'^compositions/', 'compositions.views'),
+    url(r'^assignments/', 'assignments.views'),
+    #url(r'^admin/', include(admin.site.urls)),
 )
+
+urlpatterns = format_suffix_patterns(urlpatterns)
