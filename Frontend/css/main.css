@@ -68,21 +68,26 @@ background:url('../img/note/sixteenth-note.png');
 }
 .s-notes {
 background:url('../img/note/sixteenth-notes.png');
+width: 249px !important;
 }
 .s-note-eighth {
 background:url('../img/note/sixteenth-notes-eighth.png');
+width: 249px !important;
 }
 .e-s-note {
 background:url('../img/note/eighth-sixteenth-notes.png');
+width: 245px !important;
 }
 .t-note {
 background:url('../img/note/triplet.png');
+width: 213px !important;
 }
 .e-note {
 background:url('../img/note/eighth-note.png');
 }
 .e-note-pair {
 background:url('../img/note/eighth-pair.png');
+width: 145px !important;
 }
 .q-note {
 background:url('../img/note/quarter-note.png');
