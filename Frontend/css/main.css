@@ -53,16 +53,10 @@ border-color: rgb(0,0,205);
 background-color: rgb(0,0,205);	
 border-color: rgb(0,0,205);
 }
-.q-note, .s-note, .s-note-eighth, .e-s-note, .t-note, .e-note, .e-note-pair, .q-note, .note-head, .d-quarter-note, .h-note, .d-half-note,.w-note, .d-w-note {
-background-position: top;
-background-repeat: no-repeat;
-height: 200px;
-width: 100px;
-display: inline;
-}
 .s-note {
-background:url('../img/note/sixteenth-note.png');
-width:100px;
+	background:url('../img/note/sixteenth-note.png');
+	width:104px;
+	height: 177px;
 }
 .s-notes {
 background:url('../img/note/sixteenth-notes.png');
@@ -104,4 +98,11 @@ background:url('../img/note/whole-note.png');
 background:url('../img/note/dotted-whole-note.png');
 }
 
-
+.q-note, .s-note, .s-note-eighth, .e-s-note, .t-note, .e-note, .e-note-pair, .q-note, .note-head, .d-quarter-note, .h-note, .d-half-note,.w-note, .d-w-note {
+background-position: top;
+background-repeat: no-repeat;
+height: 200px;
+width: 102px;
+display: inline-block;
+float: left;
+}
