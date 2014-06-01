@@ -36,6 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'teacher',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,18 +57,18 @@ WSGI_APPLICATION = 'movemymusic2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-#DATABASES = {
- #   'default': {
- #        'ENGINE': 'django.db.backends.postgresql_psycopg2',
- #        'NAME': 'movemymusicdb',
-	# 'USER': 'musicadmin',
-	# 'PASSWORD': 'musicrocks',
-	# 'HOST': '',
-	# 'PORT': '',
- #    }
-#}
+DATABASES = {
+   'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'movemymusic2',
+	    'USER': 'postgres',
+	    'PASSWORD': 'postgres',
+	    'HOST': '127.0.0.1',
+	    'PORT': '9000',
+    }
+}
 
-# Internationalization
+# Internationalization2
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
