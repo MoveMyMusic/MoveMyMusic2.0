@@ -1,6 +1,27 @@
-var Mmm, MIDI;
+var Mmm, MIDI, startPos;
 var notesOrder = new Array('D', 'E', 'F', 'G', 'A', 'B', 'C');
-(function() { "use strict";
+
+var playMusic = function()
+{
+	notes = new Array();
+	$('.added-note').each(function() {
+		var top     = parseInt($(this).css('top').replace('px', ''));
+		var comb    = parseInt((325 - (startPos.top + top)) / 20);
+		var nnumber = parseInt(4 + ((comb+1) / 7));
+		notes.push(notesOrder[comb % 7] + nnumber);
+	});
+	console.log(notes);
+	for (i in notes)
+	{
+		console.log(notes[i] + " : " + MIDI.keyToNote[notes[i]]);
+		MIDI.noteOn(0, MIDI.keyToNote[notes[i]], 127, i);
+		setTimeout(function() {
+			MIDI.noteOff(0, MIDI.keyToNote[notes[i]], 127, i);
+		}, 250)
+	}
+};
+
+(function() {
 	// disable mobile safari "bounce"
 	//document.addEventListener('touchmove', function(e){ e.preventDefault(); }, false);
 
@@ -60,6 +81,7 @@ var notesOrder = new Array('D', 'E', 'F', 'G', 'A', 'B', 'C');
 			Mmm = new MoveMyMusic;
 			Mmm.init();
 			MIDI.loader.stop();
+			$('.loader').remove();
 		}
 	});
 	
@@ -67,22 +89,74 @@ var notesOrder = new Array('D', 'E', 'F', 'G', 'A', 'B', 'C');
 		MIDI.loader = new widgets.Loader("Loading MoveMyMusic");
 	});
 	
-	$('.note').draggable({
+	startPos = $('#section-notes .col-sm-10').position();
+	
+	var attachDrag = function()
+	{
+		$('.note').draggable({
 			helper: 'clone',
-			grid: [ 27, 27 ],
 			start: function() {
 			},
 			drag: function() {
-				var notes = $('.note');
-				console.log($(notes[notes.length - 1]).css('top'));
+				var notes   = $('.' + this.className.split(" ")[0]);
+				var foundNote;
+				for (i = 0; i < notes.length; i++)
+				{
+					if (!$(notes[i]).hasClass('added-note'))
+					{
+						foundNote = notes[i]
+					}
+				}
+				
+				var theNote     = $(foundNote).clone();
+				var top         = parseInt($(theNote).css('top').replace('px', ''));
+				var comb        = parseInt((325 - (startPos.top + top)) / 20);
+				var currentNote = notesOrder[comb % 7];
+				if (currentNote)
+				{
+					var imageParts  = $($('.' + this.className.split(" ")[0])[0]).css('background-image').split(".");
+					imageParts[imageParts.length - 1] = '-' + currentNote.toLowerCase() + '.png)';
+					$(foundNote).css('background-image', imageParts[0] + "." + imageParts[1] + imageParts[2]);
+				}
+
 			},
 			stop: function()
 			{
-				var notes   = $('.note');
-				var theNote = $(notes[notes.length - 1]).clone().addClass('added-note').animate({left: (120 + ($('.added-note').length * 90))});
-				var top    = parseInt($(theNote).css('top').replace('px', ''));
-				if (top <= 221 && top >= -80)
-					$('#section-notes .row').append(theNote);
+				var notes   = $('.' + this.className.split(" ")[0]);
+				var foundNote;
+				for (i = 0; i < notes.length; i++)
+				{
+					if (!$(notes[i]).hasClass('added-note'))
+					{
+						foundNote = notes[i]
+					}
+				}
+				
+				var newPos = 50;
+				$('.added-note').each(function(el) {
+					newPos += parseInt($(this).css('width').replace('px', ''));
+				});
+				
+				var theNote  = $(foundNote).clone().addClass('added-note').animate({left: newPos});
+				var top      = parseInt($(theNote).css('top').replace('px', ''));
+				var comb     = parseInt((325 - (startPos.top + top)) / 20);
+				var nnumber  = parseInt(4 + ((comb+1) / 7));
+				var fullNote = notesOrder[comb % 7] + nnumber;
+				
+				MIDI.noteOn(0, MIDI.keyToNote[fullNote], 127, 0);
+				setTimeout(function() {
+					MIDI.noteOff(0, MIDI.keyToNote[fullNote], 127, 0);
+				}, 250);
+				
+				if ((startPos.top + top) <= 325 && (startPos.top + top) >= 115)
+					$('#section-notes .col-sm-10').append(theNote);
 			}
 		});
+	}
+	
+	attachDrag();
+	
+	$('.submitBtn').click(function() {
+		playMusic();
+	});
 })();
