@@ -36,8 +36,10 @@ border-radius:25px;
 .sign-in-dialog:hover {
 background: url('../img/signin.png') center no-repeat rgba(0, 0, 0, 0.2);
 }
-.btn, .btn:hover, .btn:focus {
+.btn {
 margin-top:2%;
+}
+.btn, .btn:hover, .btn:focus {
 color:rgb(240,240,240);
 }
 .btn-2 {
@@ -55,6 +57,12 @@ border-color: rgb(0,0,205);
 .btn-1:hover, .btn-1:focus, .btn-1:active, .btn-1.active, .open .dropdown-toggle.btn-1 {
 background-color: rgba(0,0,205,1);	
 border-color: rgb(0,0,205);
+}
+.btn-contact, .btn-contact:hover, .btn-contact:focus, .btn-contact:active, .btn-contact.active {
+color:rgb(0,0,0);
+}
+.top-button {
+padding:15px;
 }
 .q-note, .s-note, .s-note-rest, .s-notes, .s-note-eighth, .e-s-note, .t-note, .e-note, .e-note-rest, .e-note-pair, .q-note, .q-note-rest, .note-head, .d-quarter-note, .h-note, .d-half-note,.w-note, .w-note-rest, .d-w-note {
 background-size:contain;

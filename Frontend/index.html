@@ -14,20 +14,22 @@
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<link href="css/main.css" rel="stylesheet">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
 	</head>
 	<body>
-<div class="container">
-  
-  <div class="text-center">
-
-			<button class="btn btn-lg btn-1">Save</button>
-	        <button  class="btn btn-lg btn-2">Submit</button>
-  <img src="img/logo2.png">
- <h1 style="display:none;">Move My Music</h1>
-	        <button href="#sign-in" data-toggle="modal" class="btn btn-lg btn-1">Sign In
-</button>
-	        <button href="#teacher-options" data-toggle="modal" class="btn btn-lg btn-1">Teacher
-</button>
+<div class="container text-center">
+	<div class="col-xs-4 top-button">
+		<button class="btn btn-block btn-lg btn-1">Save</button>
+	    <button class="btn btn-block btn-lg btn-2">Submit</button>
+	</div>
+		<div class="col-xs-4">
+	<img src="img/logo2.png">
+	<h1 style="display:none;">Move My Music</h1>
+	  </div>
+	<div class="col-xs-4 top-button">
+	        <button href="#student-sign-modal" data-toggle="modal" class="btn btn-block btn-lg btn-1">Student Sign In</button>
+	        <button href="#teacher-sign-modal" data-toggle="modal" class="btn btn-block btn-lg btn-1">Teacher Sign In</button>
   </div>
   
 </div><!-- /.container -->
@@ -80,68 +82,17 @@
 </section>
 
 
-  
-  	<section id="section-contact" class="section appear clearfix">
-			<div class="container">
-				
-				<div class="row mar-bot40">
-					<div class="col-md-offset-3 col-md-6">
-						<div class="section-header">
-							<h2 class="section-heading animated" data-animation="bounceInUp">Contact us</h2>
-							<p>Comment Questions or ideas? Let us know.</p>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
-						<div class="cform" id="contact-form">
-<!-- 							<div id="sendmessage">
-								 Your message has been sent. Thank you!
-							</div> -->
-							<form action="contact/contact.php" method="post" role="form" class="contactForm">
-							  <div class="form-group">
-								<label for="name">Your Name</label>
-								<input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />
-								<div class="validation"></div>
-							  </div>
-							  <div class="form-group">
-								<label for="email">Your Email</label>
-								<input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-								<div class="validation"></div>
-							  </div>
-							  <div class="form-group">
-								<label for="subject">Subject</label>
-								<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="maxlen:4" data-msg="Please enter at least 8 chars of subject" />
-								<div class="validation"></div>
-							  </div>
-							  <div class="form-group">
-								<label for="message">Message</label>
-								<textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us"></textarea>
-								<div class="validation"></div>
-							  </div>
-							  
-							  <button type="submit" class="btn btn-theme pull-left">SEND MESSAGE</button>
-							</form>
-
-						</div>
-					</div>
-					<!-- ./span12 -->
-				</div>
-				
-			</div>
-		</section>
-
-
   <footer class="text-center"> 
   <div class="container">
+  	        <button href="#contact-us" data-toggle="modal" class="btn btn-contact btn-lg">Contact US</button>
+
 <div class="row">
 Move My Music © Copyright 2013-2014
 </div>
 </div>
 </footer>
 <div class="container">
-<div class="row">
-	<div class="modal fade" id="sign-in" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+	<div class="modal fade" id="student-sign-modal" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
 
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -265,9 +216,9 @@ Move My Music © Copyright 2013-2014
 </div>
 
   
-</div><!-- /.container -->
+</div><!-- /.container --> 
 <div class="container">
-	<div class="modal fade" id="teacher-sign-in" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal fade" id="teacher-sign-modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
 
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -305,7 +256,7 @@ Move My Music © Copyright 2013-2014
 					  					  					         <button class="btn btn-success submitbutton pull-right" id="submit-teacher-sign-in">submit</button>
 
 					      </div>  
-              <div class="col-xs-12 col-sm-6">    
+              <div class="col-xs-12 col-sm-6 well">    
                 <h5>Teacher Sign Up </h5>
                 <p class="lead"></p>
             					<div class="form-group">
@@ -349,8 +300,61 @@ Move My Music © Copyright 2013-2014
 			   <!-- modal-body -->
 
         <div class="modal-footer">      
-             <a href="#" class="btn" data-dismiss="modal">Close</a>
+             <a href="#" class="btn btn-2" data-dismiss="modal">Close</a>
          
+        </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+
+  
+</div><!-- /.container -->
+
+			<div class="container">
+	<div class="modal fade" id="contact-us" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Contact US</h4>
+          </div>
+          
+        <div class="modal-body">
+							<form action="contact/contact.php" method="post" role="form" class="contactForm">
+							  <div class="form-group">
+								<label for="name">Your Name</label>
+								<input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />
+								<div class="validation"></div>
+							  </div>
+							  <div class="form-group">
+								<label for="email">Your Email</label>
+								<input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+								<div class="validation"></div>
+							  </div>
+							  <div class="form-group">
+								<label for="subject">Subject</label>
+								<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="maxlen:4" data-msg="Please enter at least 8 chars of subject" />
+								<div class="validation"></div>
+							  </div>
+							  <div class="form-group">
+								<label for="message">Message</label>
+								<textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us"></textarea>
+								<div class="validation"></div>
+							  </div>							  
+							</form>
+			 </div> 
+			   <!-- modal-body -->
+
+        <div class="modal-footer">      
+			<button type="submit" class="btn btn-1 pull-left">SEND MESSAGE</button>
+             <a href="#" class="btn btn-2" data-dismiss="modal">Close</a>         
         </div>
 
 
