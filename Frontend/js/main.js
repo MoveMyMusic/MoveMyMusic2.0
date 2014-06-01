@@ -41,6 +41,9 @@ var ajaxRequest = function()
 				for (i in data)
 				{
 					// each row will come back as an object data[i]
+					// data[i] = {studentId: 1, classId: 5}
+					// data[i].studentId
+					$('.classMyDiv').append($('<div class="classname">' + data[i].studentId + '</div>'));
 				}
 			}
 		});
