@@ -1,21 +1,65 @@
 var Mmm, MIDI, startPos;
-var notesOrder = new Array('D', 'E', 'F', 'G', 'A', 'B', 'C');
+var notesOrder     = new Array('D', 'E', 'F', 'G', 'A', 'B', 'C');
+var bassNotesOrder = new Array('F', 'G', 'A', 'B', 'C', 'D', 'E');
+var lengthMap      = {
+						's'  : .25,
+						'sr' : .25,
+						'e'  : .5,
+						'er' : .5,
+						'q'  : 1,
+						'qr' : 1,
+						'h'  : 2,
+						'hr' : 2,
+						'dh' : 3,
+						'w'  : 4,
+						'wr' : 4,
+						'dw' : 6
+					};
+var elements;
+var playingNote = 0;
 
 var playMusic = function()
 {
-	notes = new Array();
+	notes    = new Array();
+	lengths  = new Array();
+	elements = new Array();
 	$('.added-note').each(function() {
 		var top     = parseInt($(this).css('top').replace('px', ''));
 		var comb    = parseInt((325 - (startPos.top + top)) / 20);
 		var nnumber = parseInt(4 + ((comb+1) / 7));
 		notes.push(notesOrder[comb % 7] + nnumber);
+		lengths.push($(this).data('beats'));
+		elements.push(this);
 	});
-	console.log(notes);
+	b = 0;
+	time     = 0;
 	for (i in notes)
 	{
-		console.log(notes[i] + " : " + MIDI.keyToNote[notes[i]] + " : " + i);
-		MIDI.noteOn(0, MIDI.keyToNote[notes[i]], 127, i * .5);
+		setTimeout(function() {
+			if (playingNote > 0)
+				$(elements[playingNote - 1]).animate({opacity: 1});
+			$(elements[playingNote]).animate({opacity: .25});
+			playingNote++;
+		}, 1000*time);
+	
+		subnotes = lengths[i].split("-");
+		for (s in subnotes)
+		{
+			var noteToPlay = MIDI.keyToNote[notes[i]];
+			if (subnotes[s] == 'sr' || subnotes[s] == 'er' || subnotes[s] == 'qr' || subnotes[s] == 'hr' || subnotes[s] == 'wr')
+				noteToPlay = 0;
+			
+			time += (lengthMap[subnotes[s]]);
+			
+			MIDI.noteOn(0, noteToPlay, 127, time);
+			console.log(time + " Length of play.");
+		}
+		playingNote = 0;
 	}
+	
+	setTimeout(function() {
+		$(elements).animate({opacity: 1});
+	}, 1000*((b + 2)*.5));
 };
 
 (function() {
@@ -43,10 +87,6 @@ var playMusic = function()
 					playNote = MIDI.keyToNote[playNote];
 				SELF.inputSingle(playNote);
 			})
-			/*Event.add($('a')[0], 'mousedown', function(event) {
-				console.log($(event.target).data('note'));
-				SELF.inputSingle(80);
-			});*/
 		}
 
 		this.setDefault = function() { // set default values
@@ -109,7 +149,7 @@ var playMusic = function()
 				var top         = parseInt($(theNote).css('top').replace('px', ''));
 				var comb        = parseInt((325 - (startPos.top + top)) / 20);
 				var currentNote = notesOrder[comb % 7];
-				if (currentNote)
+				if (currentNote && $(foundNote)[0].className.indexOf('rest') == -1)
 				{
 					var imageParts  = $($('.' + this.className.split(" ")[0])[0]).css('background-image').split(".");
 					imageParts[imageParts.length - 1] = '-' + currentNote.toLowerCase() + '.png)';
@@ -139,14 +179,10 @@ var playMusic = function()
 				var comb     = parseInt((325 - (startPos.top + top)) / 20);
 				var nnumber  = parseInt(4 + ((comb+1) / 7));
 				var fullNote = notesOrder[comb % 7] + nnumber;
-				
-				MIDI.noteOn(0, MIDI.keyToNote[fullNote], 127, 0);
-/*
-				setTimeout(function() {
-					MIDI.noteOff(0, MIDI.keyToNote[fullNote], 0);
-					console.log(fullNote + " : " + MIDI.keyToNote[fullNote]);
-				}, 250);
-*/
+				if ($(theNote)[0].className.indexOf('rest') == -1)
+					MIDI.noteOn(0, MIDI.keyToNote[fullNote], 127, 0);
+				else
+					$(theNote).animate({top: -255});
 				
 				if ((startPos.top + top) <= 325 && (startPos.top + top) >= 115)
 					$('#section-notes .col-sm-10').append(theNote);
