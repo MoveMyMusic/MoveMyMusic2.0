@@ -163,3 +163,11 @@ float: left;}
 	background-size: 35px auto;
 	width: 40px;
 }
+
+.treble {
+	margin-top: -50px;
+}
+
+.bass {
+	margin-top: 20px;
+}

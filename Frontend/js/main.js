@@ -1,7 +1,8 @@
 var Mmm, MIDI, startPos;
-var notesOrder     = new Array('D', 'E', 'F', 'G', 'A', 'B', 'C');
-var bassNotesOrder = new Array('F', 'G', 'A', 'B', 'C', 'D', 'E');
-var lengthMap      = {
+var trebleNotesOrder = new Array('C', 'D', 'E', 'F', 'G', 'A', 'B');
+var bassNotesOrder   = new Array('E', 'F', 'G', 'A', 'B', 'C', 'D');
+var notesOrder       = trebleNotesOrder;
+var lengthMap        = {
 						's'  : .25,
 						'sr' : .25,
 						'e'  : .5,
@@ -18,6 +19,33 @@ var lengthMap      = {
 var elements;
 var playingNote = 0;
 
+var ajaxRequest = function()
+{
+		var jsonObject = {
+							'studentId' : 1,
+							'classId'   : 5
+						}
+		$.ajax(
+		{
+			url      : '/rest/endpoint',
+			type     : 'post',
+			// Get info 'get'
+			// Create new 'post'
+			// Update record 'put'
+			// Delete record 'delete'
+			dataType : 'json',
+			data     : JSON.stringify(jsonObject),
+			success  : function(data, textStatus, jqXHR) 
+			{
+				console.log(data);
+				for (i in data)
+				{
+					// each row will come back as an object data[i]
+				}
+			}
+		});
+}
+
 var playMusic = function()
 {
 	notes    = new Array();
@@ -25,8 +53,8 @@ var playMusic = function()
 	elements = new Array();
 	$('.added-note').each(function() {
 		var top     = parseInt($(this).css('top').replace('px', ''));
-		var comb    = parseInt((325 - (startPos.top + top)) / 20);
-		var nnumber = parseInt(4 + ((comb+1) / 7));
+		var comb    = parseInt((345 - (startPos.top + top)) / 20);
+		var nnumber = parseInt(4 + (comb / 7));
 		notes.push(notesOrder[comb % 7] + nnumber);
 		lengths.push($(this).data('beats'));
 		elements.push(this);
@@ -52,14 +80,23 @@ var playMusic = function()
 			time += (lengthMap[subnotes[s]]);
 			
 			MIDI.noteOn(0, noteToPlay, 127, time);
-			console.log(time + " Length of play.");
 		}
 		playingNote = 0;
 	}
 	
 	setTimeout(function() {
 		$(elements).animate({opacity: 1});
-	}, 1000*((b + 2)*.5));
+	}, 1000*(time + 2));
+};
+
+var removeNote = function(noteElement)
+{
+	$(noteElement).remove();
+	var sizeSoFar = 50;
+	$('.added-note').each(function() {
+		$(this).animate({left: sizeSoFar});
+		sizeSoFar += parseInt($(this).css('width').replace('px', ''));
+	})
 };
 
 (function() {
@@ -176,15 +213,18 @@ var playMusic = function()
 				
 				var theNote  = $(foundNote).clone().addClass('added-note').animate({left: newPos});
 				var top      = parseInt($(theNote).css('top').replace('px', ''));
-				var comb     = parseInt((325 - (startPos.top + top)) / 20);
-				var nnumber  = parseInt(4 + ((comb+1) / 7));
+				var comb     = parseInt((345 - (startPos.top + top)) / 20);
+				var nnumber  = parseInt(4 + ((comb) / 7));
 				var fullNote = notesOrder[comb % 7] + nnumber;
+				$(theNote).click(function() {
+					removeNote(this);
+				})
 				if ($(theNote)[0].className.indexOf('rest') == -1)
 					MIDI.noteOn(0, MIDI.keyToNote[fullNote], 127, 0);
 				else
-					$(theNote).animate({top: -255});
+					$(theNote).animate({top: -200});
 				
-				if ((startPos.top + top) <= 325 && (startPos.top + top) >= 115)
+				if ((startPos.top + top) <= 345 && (startPos.top + top) >= 115)
 					$('#section-notes .col-sm-10').append(theNote);
 			}
 		});
@@ -195,4 +235,25 @@ var playMusic = function()
 	$('.submitBtn').click(function() {
 		playMusic();
 	});
+	
+	$('.clef').click(function() {
+		if (confirm("Are you sure you want to change your clef? This will clear all notes."))
+		{
+			if ($(this).attr('src') == 'img/note/treble-clef.png')
+			{
+				$(this).attr('src', 'img/note/bass-clef.png');
+				$(this).removeClass('treble').addClass('bass');
+				notesOrder = bassNotesOrder;
+			} else {
+				$(this).attr('src', 'img/note/treble-clef.png');
+				$(this).removeClass('bass').addClass('treble');
+				notesOrder = trebleNotesOrder;
+			}
+			$('.added-note').each(function() {
+				removeNote(this);
+			})
+		}
+	})
+	
+	
 })();
