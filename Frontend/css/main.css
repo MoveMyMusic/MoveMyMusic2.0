@@ -52,8 +52,8 @@ border-color: rgb(0,0,205);
 background-color: rgb(0,0,205);	
 border-color: rgb(0,0,205);
 }
-.q-note, .s-note,.s-notes, .s-note-eighth, .e-s-note, .t-note, .e-note, .e-note-pair, .q-note, .note-head, .d-quarter-note, .h-note, .d-half-note,.w-note, .d-w-note {
-background-size:auto 60px ;
+.q-note, .s-note, .s-note-rest, .s-notes, .s-note-eighth, .e-s-note, .t-note, .e-note, .e-note-rest, .e-note-pair, .q-note, .q-note-rest, .note-head, .d-quarter-note, .h-note, .d-half-note,.w-note, .w-note-rest, .d-w-note {
+background-size:contain;
 height: 64px;
 width: 40px;
 float: left;
@@ -63,8 +63,17 @@ display: inline-block;
 margin-left:6px;
 margin-right:6px; 
 }
+.note-rest-wrapper {
+height: 150px;
+width: 50px;
+display: inline-block;
+float: left;}
 .s-note {
 	background-image:url('../img/note/sixteenth-note.png');
+}
+.s-note-rest {
+	background-image:url('../img/note/sixteenth-rest.png');
+	background-size: auto 50px;
 }
 .s-notes {
 	background-image:url('../img/note/sixteenth-notes.png');
@@ -85,12 +94,20 @@ margin-right:6px;
 .e-note {
 	background-image:url('../img/note/eighth-note.png');
 }
+.e-note-rest {
+	background-image:url('../img/note/eighth-rest.png');
+	background-size: auto 50px;
+}
 .e-note-pair {
 	background-image:url('../img/note/eighth-pair.png');
 	width: 55px;
 }
 .q-note {
 	background-image:url('../img/note/quarter-note.png');
+}
+.q-note-rest {
+	background-image:url('../img/note/quarter-rest.png');
+	background-size: auto 50px;
 }
 .note-head {
 	background-image:url('../img/note/note-head.png');
@@ -103,6 +120,9 @@ margin-right:6px;
 .h-note {
 	background-image:url('../img/note/half-note.png');
 }
+.h-note-rest {
+	background-image:url('../img/note/half-rest.png');
+}
 .d-half-note {
 	background-image:url('../img/note/dotted-half-note.png');
 }
@@ -110,6 +130,9 @@ margin-right:6px;
 	background-image:url('../img/note/whole-note.png');
 	background-size: 25px auto;
 	width: 29px;
+}
+.w-note-rest {
+	background-image:url('../img/note/whole-rest.png');
 }
 .d-w-note {
 	background-image:url('../img/note/dotted-whole-note.png');
