@@ -36,7 +36,6 @@ background:url('../img/signin.png') center no-repeat rgba(0,0,0,.50);
 margin-top:2%;
 color:rgb(240,240,240);
 }
-
 .btn-2 {
 background-color: rgb(255,215,0);
 border-color: rgb(255,215,0);
@@ -54,12 +53,18 @@ background-color: rgb(0,0,205);
 border-color: rgb(0,0,205);
 }
 .q-note, .s-note, .s-note-eighth, .e-s-note, .t-note, .e-note, .e-note-pair, .q-note, .note-head, .d-quarter-note, .h-note, .d-half-note,.w-note, .d-w-note {
-background-size:80px 200px ;
+/* background-size:80px 200px ; */
 height: 200px;
 width: 80px;
+float: left;
 }
 .s-note {
 background:url('../img/note/sixteenth-note.png');
+}
+.s-note {
+	background:url('../img/note/sixteenth-note.png');
+	width:104px;
+	height: 177px;
 }
 .s-notes {
 background:url('../img/note/sixteenth-notes.png');
@@ -105,4 +110,3 @@ background-position: bottom;
 background-repeat: no-repeat;
 display: inline-block;
 }
-
