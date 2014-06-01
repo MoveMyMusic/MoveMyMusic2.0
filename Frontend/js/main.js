@@ -13,11 +13,8 @@ var playMusic = function()
 	console.log(notes);
 	for (i in notes)
 	{
-		console.log(notes[i] + " : " + MIDI.keyToNote[notes[i]]);
-		MIDI.noteOn(0, MIDI.keyToNote[notes[i]], 127, i);
-		setTimeout(function() {
-			MIDI.noteOff(0, MIDI.keyToNote[notes[i]], 127, i);
-		}, 250)
+		console.log(notes[i] + " : " + MIDI.keyToNote[notes[i]] + " : " + i);
+		MIDI.noteOn(0, MIDI.keyToNote[notes[i]], 127, i * .5);
 	}
 };
 
@@ -144,9 +141,12 @@ var playMusic = function()
 				var fullNote = notesOrder[comb % 7] + nnumber;
 				
 				MIDI.noteOn(0, MIDI.keyToNote[fullNote], 127, 0);
+/*
 				setTimeout(function() {
-					MIDI.noteOff(0, MIDI.keyToNote[fullNote], 127, 0);
+					MIDI.noteOff(0, MIDI.keyToNote[fullNote], 0);
+					console.log(fullNote + " : " + MIDI.keyToNote[fullNote]);
 				}, 250);
+*/
 				
 				if ((startPos.top + top) <= 325 && (startPos.top + top) >= 115)
 					$('#section-notes .col-sm-10').append(theNote);
