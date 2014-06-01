@@ -18,21 +18,24 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 	</head>
 	<body>
+	<div class="header-bars">
 <div class="container text-center">
-	<div class="col-xs-4 top-button">
+	<div class="col-xs-3 top-button">
 		<button class="btn btn-block btn-lg btn-1">Save</button>
 	    <button class="btn btn-block btn-lg btn-2">Submit</button>
 	</div>
-		<div class="col-xs-4">
+		<div class="col-xs-6">
 	<img src="img/logo2.png">
 	<h1 style="display:none;">Move My Music</h1>
 	  </div>
-	<div class="col-xs-4 top-button">
+	<div class="col-xs-3 top-button">
 	        <button href="#student-sign-modal" data-toggle="modal" class="btn btn-block btn-lg btn-1">Student Sign In</button>
-	        <button href="#teacher-sign-modal" data-toggle="modal" class="btn btn-block btn-lg btn-1">Teacher Sign In</button>
+	        <button href="#teacher-sign-modal" data-toggle="modal" class="btn btn-block btn-lg btn-success">Teacher Sign In</button>
   </div>
   
 </div><!-- /.container -->
+  </div>
+
 <div class="container sign-in-dialog">
   
 <div class="big-box staffmusic">
@@ -327,7 +330,7 @@ Move My Music © Copyright 2013-2014
           </div>
           
         <div class="modal-body">
-							<form action="contact/contact.php" method="post" role="form" class="contactForm">
+							<form id="contact-us-form" action="contact/contact.php" method="post" role="form" class="contactForm">
 							  <div class="form-group">
 								<label for="name">Your Name</label>
 								<input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />
@@ -353,7 +356,7 @@ Move My Music © Copyright 2013-2014
 			   <!-- modal-body -->
 
         <div class="modal-footer">      
-			<button type="submit" class="btn btn-1 pull-left">SEND MESSAGE</button>
+			<button type="submit" class="btn btn-1 pull-left" id="contact-us-form-submit">SEND MESSAGE</button>
              <a href="#" class="btn btn-2" data-dismiss="modal">Close</a>         
         </div>
 
