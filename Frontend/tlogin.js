@@ -1,18 +1,17 @@
 $(document).ready(function(){
 	$("#add_err").css('display', 'none', 'important');
-	 $("button#submit-sign-in").click(function(){	
-		  fname=$("#fname").val();
-		  lname=$("#lname").val();
-		  password=$("#word").val();
+	 $("button#submit-teacher-sign-in").click(function(){	
+		  uname=$("#uname").val();
+		  password=$("#tword").val();
 		  $.ajax({
 		   type: "POST",
-		   url: "login.php",
-			data: "fname="+fistname+"lname="+lastname+"&pwd="+password,
+		   url: "tlogin.php",
+			data: "uname="+username+"&tpwd="+tpassword,
 		   success: function(html){    
 			if(html=='true')    {
 			 //$("#add_err").html("right username or password");
 			 window.location="dashboard.php";
-			$("#submit-sign-in").hide();
+			$("#submit-teacher-sign-in").hide();
 			$("div.container.sign-in-dialog").removeClass("sign-in-dialog");
 
 			}
