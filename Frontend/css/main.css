@@ -55,54 +55,57 @@ border-color: rgb(0,0,205);
 }
 .s-note {
 	background:url('../img/note/sixteenth-note.png');
-	width:104px;
-	height: 177px;
 }
 .s-notes {
-background:url('../img/note/sixteenth-notes.png');
+	background:url('../img/note/sixteenth-notes.png');
+	width: 249px !important;
 }
 .s-note-eighth {
-background:url('../img/note/sixteenth-notes-eighth.png');
+	background:url('../img/note/sixteenth-notes-eighth.png');
+	width: 249px !important;
 }
 .e-s-note {
-background:url('../img/note/eighth-sixteenth-notes.png');
+	background:url('../img/note/eighth-sixteenth-notes.png');
+	width: 245px !important;
 }
 .t-note {
-background:url('../img/note/triplet.png');
+	background:url('../img/note/triplet.png');
+	width: 213px !important;
 }
 .e-note {
-background:url('../img/note/eighth-note.png');
+	background:url('../img/note/eighth-note.png');
 }
 .e-note-pair {
-background:url('../img/note/eighth-pair.png');
+	background:url('../img/note/eighth-pair.png');
+	width: 145px !important;
 }
 .q-note {
-background:url('../img/note/quarter-note.png');
+	background:url('../img/note/quarter-note.png');
 }
 .note-head {
-background:url('../img/note/note-head.png');
+	background:url('../img/note/note-head.png');
 }
 .d-quarter-note {
-background:url('../img/note/dotted-quarter-note.png');
+	background:url('../img/note/dotted-quarter-note.png');
 }
 .h-note {
-background:url('../img/note/half-note.png');
+	background:url('../img/note/half-note.png');
 }
 .d-half-note {
-background:url('../img/note/dotted-half-note.png');
+	background:url('../img/note/dotted-half-note.png');
 }
 .w-note {
-background:url('../img/note/whole-note.png');
+	background:url('../img/note/whole-note.png');
 }
 .d-w-note {
-background:url('../img/note/dotted-whole-note.png');
+	background:url('../img/note/dotted-whole-note.png');
 }
 
-.q-note, .s-note, .s-note-eighth, .e-s-note, .t-note, .e-note, .e-note-pair, .q-note, .note-head, .d-quarter-note, .h-note, .d-half-note,.w-note, .d-w-note {
-background-position: top;
-background-repeat: no-repeat;
-height: 200px;
-width: 102px;
-display: inline-block;
-float: left;
+.q-note, .s-note, .s-notes, .s-note-eighth, .e-s-note, .t-note, .e-note, .e-note-pair, .q-note, .note-head, .d-quarter-note, .h-note, .d-half-note,.w-note, .d-w-note {
+	background-position: bottom;
+	background-repeat: no-repeat;
+	height: 200px;
+	width: 102px;
+	display: inline-block;
+	float: left;
 }
