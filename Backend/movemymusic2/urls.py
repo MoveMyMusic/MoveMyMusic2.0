@@ -11,5 +11,7 @@ urlpatterns = patterns('',
     url(r'^students/', 'movemymusic2.views.students'),
     url(r'^compositions/', 'movemymusic2.views.compositions'),
     url(r'^assignments/', 'movemymusic2.views.assignments'),
-    url(r'^admin/', include(admin.site.urls)),
+    #url(r'^admin/', include(admin.site.urls)),
 )
+
+urlpatterns = format_suffix_patterns(urlpatterns)
