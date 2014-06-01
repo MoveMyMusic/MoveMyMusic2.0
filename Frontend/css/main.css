@@ -29,11 +29,31 @@ padding-top:6%;
 #section-notes object {
 height:100%;
 }
-.q-note {
-background:url('../img/quarter-note.svg') top no-repeat;
-height:300px;
+.sign-in-dialog {
+background:url('../img/signin.png') center no-repeat rgba(0,0,0,.50);
 }
-.btn {
+.btn, .btn:hover, .btn:focus {
 margin-top:2%;
+color:rgb(240,240,240);
 }
 
+.btn-2 {
+background-color: rgb(255,215,0);
+border-color: rgb(255,215,0);
+}
+.btn-2:hover, .btn-2:focus, .btn-2:active, .btn-2.active, .open .dropdown-toggle.btn-2 {
+background-color: rgb(255,215,0);
+border-color: rgb(255,215,0));
+}
+.btn-1{
+background-color: rgb(0,0,205);
+border-color: rgb(0,0,205);
+}
+.btn-1:hover, .btn-1:focus, .btn-1:active, .btn-1.active, .open .dropdown-toggle.btn-1 {
+background-color: rgb(0,0,205);	
+border-color: rgb(0,0,205);
+}
+.q-note {
+background:url('../img/note/quarter-note.png') top no-repeat;
+height:300px;
+}

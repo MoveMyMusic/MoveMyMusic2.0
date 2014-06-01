@@ -66,5 +66,23 @@ var Mmm, MIDI;
 		MIDI.loader = new widgets.Loader("Loading MoveMyMusic");
 	});
 	
-	$('.q-note').draggable();
+	$('.q-note').draggable({
+			helper: 'clone',
+			grid: [ 27, 27 ],
+			start: function() {
+			},
+			drag: function() {
+				var notes = $('.q-note');
+				console.log($(notes[notes.length - 1]).css('top'));
+			},
+			stop: function()
+			{
+				var notes   = $('.q-note');
+				var theNote = $(notes[notes.length - 1]).clone().addClass('added-note').animate({left: (120 + ($('.added-note').length * 90))});
+				var top    = parseInt($(theNote).css('top').replace('px', ''));
+				console.log(top);
+				if (top <= 221 && top >= -80)
+					$('#section-notes .row').append(theNote);
+			}
+		});
 })();
